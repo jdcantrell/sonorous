@@ -1,0 +1,155 @@
+// Import the normalize plugin
+$legacy-support-for-ie6: 0;
+$legacy-support-for-ie7: 1;
+$legacy-support-for-mozilla: 0;
+
+@import "normalize";
+@import "compass/css3/text-shadow";
+@import "compass/css3/images";
+@import "compass/css3/box-shadow";
+
+
+html, body {height: 100%}
+
+$gradient1: #a5d7a5;
+$gradient2: #78bc99;
+$gradient3: #398282;
+$gradient4: #0a476a;
+
+a {
+  color: $gradient4;
+}
+a:visited {
+  color: $gradient3;
+}
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  text-transform: normal;
+  letter-spacing: normal;
+  line-height: 1.45em;
+  color: #444;
+  background-color:#0a476a;
+  padding: 0;
+  margin: 0;
+  background-repeat: both;
+}
+
+#header {
+  text-align: center;
+  padding-top: 5px;
+  font-size: 22px;
+  font-weight: bold;
+  background-color: #0089ef;
+  background-color:#224293;
+  @include background-image(linear-gradient(top, 
+    $gradient1 0%,  $gradient1 25%, 
+    $gradient2 26%, $gradient2 50%, 
+    $gradient3 51%, $gradient3 75%, 
+    $gradient4 76%, $gradient4 100%
+  ));
+  color:#eee;
+}
+
+.goodrobot {
+  min-height: 100%;
+}
+
+.content {
+  overflow: auto;
+  padding-bottom: 50px;
+}
+
+body > footer {
+  position: relative;
+  margin-top: -50px;
+  height: 50px;
+  clear: both;
+  background-color:#398282;
+  @include background-image(linear-gradient(top, #0a476a 0%,#0a476a 25%,#398282 26%,#398282 50%,#78bc99 51%,#78bc99 75%,#a5d7a5 76%,#a5d7a5 100%));
+  //border-top: 3px solid #eee;
+}
+
+a {
+  text-decoration : none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+nav {
+  padding: 15px 0 0 0;
+  text-align: center;
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: #224293 -1px 1px 1px
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline-block;
+      margin: 4px;
+    }
+
+  }
+}
+
+h1 {
+  font-size:2.3em;
+  font-weight: normal;
+}
+h2 {
+  font-size:2em;
+  font-weight: normal;
+  margin-bottom:.6em;
+}
+
+.media {margin:10px;}
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+.media .img {float:left; margin-right: 10px;}
+.media .img img{display:block;}
+.media .imgExt{float:right; margin-left: 10px;}
+
+.music-node {
+  text-align: center;
+  color: #fff;
+  width: 140px;
+  height: 140px;
+  margin: 10px 10px;
+  float:left;
+}
+.node-cover {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: justify;
+  width: 120px;
+  height: 120px;
+  list-style: none;
+  border-radius: 4px;
+  padding: 0;
+  margin: auto;
+  @include single-box-shadow(#333, 1px, 1px, 6px);
+
+  li:first-child {
+    border-radius: 4px 0 0 4px;
+  }
+  li:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+
+  li {
+    -webkit-box-flex: 1;
+    height: 100%;
+    background-position: 50% 0%;
+  }
+}
