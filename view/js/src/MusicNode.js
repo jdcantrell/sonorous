@@ -8,13 +8,14 @@ var MusicNodeView = Backbone.View.extend({
   className: 'music-node',
   template: 
     _.template('<ul class="node-cover">' + 
-      '<% _.each(images, function (img) { %><li style="background-image:url(\'<%= img %>\')"> <% }); %>' +
+      '<% _.each(images, function (img) { %><li style="background-image:url(\'<%= img.path %>\')"> <% }); %>' +
     '</ul>' + 
     '<%= name %>'),
   render: function () {
     this.$el.html(this.template(this.model.toJSON()));
   },
   navigate: function () {
+    console.log(this.model);
     SonorousApp.navigate(this.model.get("path"), {trigger: true});
   }
 });
@@ -29,6 +30,8 @@ var NodeView = Backbone.View.extend({
     this.collection.on('reset', this.render, this);
   },
   render: function () {
+    this.$el.html("")
+    console.log(this.$el);
     this.collection.forEach(this.renderOne, this);
   },
   renderOne: function (node) {

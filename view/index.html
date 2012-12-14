@@ -7,29 +7,20 @@
     <div class="content">
     </div>
     <div class="controls">
+      <a class="play">Play</a>
+      <a class="pause">Pause</a>
+      <a class="stop">Stop</a>
+      <a class="next">Next</a>
+      <a class="prev">Prev</a>
+      <span class="track"></span>
+      <audio id="player"></audio>
     </div>
     <script src="js/zepto.js"></script>
     <script src="js/underscore.js"></script>
     <script src="js/backbone.js"></script>
-    <script>
-      var nodes = [{"images": ["/music/8-bit%20Peoples/8bp023%20-%20Commie64%20-%20Boolean%20Values%20SOLD%20OUT/8BP023.gif", "/music/8-bit%20Peoples/8bp099%20-%20Starscream%20-%20Future%2C%20and%20It%20Doesn%27t%20Work/8BP099.gif", "/music/8-bit%20Peoples/8bp091%20-%20gwEm%20and%20Counter%20Reset%20-%20Live%20From%20Hell/8BP091.gif", "/music/8-bit%20Peoples/8bp035%20-%20Sabastian%20Boaz%20-%20Audiocraft/8BP035.gif"], "path": "/music/8-bit%20Peoples/", "name": "8-bit Peoples"}, {"images": ["/music/Anapnea/AlbumArtSmall.jpg", "/music/Anapnea/Folder.jpg", "/music/Anapnea/art.png"], "path": "/music/Anapnea/", "name": "Anapnea"}, {"images": ["/music/Bliss/mtk116.gif", "/music/Bliss/mtk137.jpg", "/music/Bliss/mtk137large.jpg"], "path": "/music/Bliss/", "name": "Bliss"}, {"images": ["/music/Carl%20Sagan%27s%20Ghost/Especially%20For%20Them/EFTcover.jpg"], "path": "/music/Carl%20Sagan%27s%20Ghost/", "name": "Carl Sagan's Ghost"}, {"images": ["/music/Carl%20Sagan%27s%20Ghost%20Recommendations/Doyeq%20-%20Eyelashes%20of%20Lanterns/pass003_-_doyeq_-_eyelashes_of_lanterns.jpg", "/music/Carl%20Sagan%27s%20Ghost%20Recommendations/Variex%20-%20Quitting%20Tomorrow/Variex%20-%20Quitting%20Tomorrow%20-%20back%20cover.jpg", "/music/Carl%20Sagan%27s%20Ghost%20Recommendations/The%20Roots%20of%20Orchis%20-%20Empty%20Lands%20Ahead%20and%20Behind/The%20Roots%20Of%20Orchis%20-%20Empty%20Lands%20Ahead%20And%20Behind%20%5BMP3%5D/back.jpg", "/music/Carl%20Sagan%27s%20Ghost%20Recommendations/Language%20of%20Landscape%20-%20Memories%20Fade%20Under%20a%20Shallow%20Autumn%20Snow/cover.jpg"], "path": "/music/Carl%20Sagan%27s%20Ghost%20Recommendations/", "name": "Carl Sagan's Ghost Recommendations"}, {"images": ["/music/GameBundle/Alec%20Holowka%20-%20Aquaria/Alec%20Holowka%20-%20Aquaria-%20Original%20Soundtrack%20-%20cover.png", "/music/GameBundle/A_Rival%20-%208-Bit%20Pimp/cover.jpg", "/music/GameBundle/Reives.Freebird%20-%20To%20the%20Moon/Reives.Freebird%20-%20To%20the%20Moon%20-OST-%20-%20To_the_Moon-launch-poster-lrg.png", "/music/GameBundle/Final%20Form%20Games%20-%20Jamestown%20Soundtrack/Final%20Form%20Games%20-%20Jamestown%20Soundtrack%20-%20cover.png"], "path": "/music/GameBundle/", "name": "GameBundle"}, {"images": ["/music/Gaston%20Arevalo/pass009_-_gaston_arevalo_-_habitat.jpg"], "path": "/music/Gaston%20Arevalo/", "name": "Gaston Arevalo"}, {"images": ["/music/Nubuwo%20-%20Digital%20Adventures/nubuwo%20-%20Digital%20Adventures%20-%20baiyon_2012_wallpaper.jpg", "/music/Nubuwo%20-%20Digital%20Adventures/nubuwo%20-%20Digital%20Adventures%20-%20imeruat_wallpaper.jpg"], "path": "/music/Nubuwo%20-%20Digital%20Adventures/", "name": "Nubuwo - Digital Adventures"}, {"images": ["/music/Nubuwo%20-%20Instrumental%20Pack/cover.jpg"], "path": "/music/Nubuwo%20-%20Instrumental%20Pack/", "name": "Nubuwo - Instrumental Pack"}, {"images": ["/music/Nubuwo%20-%20Vocal%20Pack/cover.jpg"], "path": "/music/Nubuwo%20-%20Vocal%20Pack/", "name": "Nubuwo - Vocal Pack"}, {"images": ["/music/Sekotis%20-%20People%20in%20Grass%20Houses/NS014.jpg"], "path": "/music/Sekotis%20-%20People%20in%20Grass%20Houses/", "name": "Sekotis - People in Grass Houses"}, {"images": ["/music/Sekotis%20-%20Picture%20Puzzle%20Pattern%20Door/Back.jpg", "/music/Sekotis%20-%20Picture%20Puzzle%20Pattern%20Door/Front_Cover.jpg", "/music/Sekotis%20-%20Picture%20Puzzle%20Pattern%20Door/Gatefold_1.jpg", "/music/Sekotis%20-%20Picture%20Puzzle%20Pattern%20Door/Gatefold_2.jpg"], "path": "/music/Sekotis%20-%20Picture%20Puzzle%20Pattern%20Door/", "name": "Sekotis - Picture Puzzle Pattern Door"}];
-
-
-      var leaves = [{
-        name: "8bp099 - Starscream - Future, and It Doesn't Work",
-        img: "starscream.gif",
-        path:"8bp099",
-        files: [
-          {name: "Rise of Space", file: "8pb099-01-starscream-rise_of_space.mp3"},
-          {name: "Space Party Anthem", file: "8pb099-02-starscream-space_party_anthem.mp3"},
-          {name: "Gravity in Terms of Space", file: "8pb099-03-starscream-gravity_in_terms_of_space-time.mp3"},
-          {name: "Keplers Star Catalog", file: "8pb099-04-starscream-keplers_star_catalog.mp3"},
-          {name:"Future, and it Doesn't Work", file: "8pb099-05-starscream-future_and_it_doesn't_work.mp3"}
-        ]
-      }];
-      </script>
-      <script src="js/src/MusicNode.js"></script>
-      <script src="js/src/MusicLeaf.js"></script>
-      <script src="js/src/routes.js"></script>
+    <script src="js/src/Player.js"></script>
+    <script src="js/src/MusicNode.js"></script>
+    <script src="js/src/MusicLeaf.js"></script>
+    <script src="js/src/routes.js"></script>
   </body>
 </html>

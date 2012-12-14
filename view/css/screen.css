@@ -324,7 +324,7 @@ body {
   text-transform: normal;
   letter-spacing: normal;
   line-height: 1.45em;
-  color: #444;
+  color: #fff;
   background-color: #0a476a;
   padding: 0;
   margin: 0;
@@ -510,4 +510,22 @@ h2 {
   -webkit-box-flex: 1;
   height: 100%;
   background-position: 50% 0%;
+}
+
+/* line 180, ../../sass/screen.scss */
+.controls {
+  position: fixed;
+  background-color: #333;
+  bottom: 0;
+  width: 100%;
+  font-size: 25px;
+  padding: 15px;
+}
+/* line 188, ../../sass/screen.scss */
+.controls a {
+  color: #666;
+}
+/* line 191, ../../sass/screen.scss */
+.controls a.active, .controls a:hover {
+  color: #fff;
 }

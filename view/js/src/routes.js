@@ -19,22 +19,34 @@ var SonorousApp = new (Backbone.Router.extend({
   },
   start: function () {
     Backbone.history.start();
-    if (nodes) {
+    if (typeof nodes !== "undefined") {
       this.nodeList.reset(nodes);
     }
-    if (leaves) {
+    if (typeof leaves !== "undefined") {
       this.leafList.reset(leaves);
     }
+
+    this.currentTrack = new Track();
+    this.player = new Player({el:$('.controls'), model: this.currentTrack})
   },
   load: function (data) {
     console.log(data);
+    if (data.nodes.length) {
+      this.nodeList.reset(data.nodes)
+    }
+    if (data.leaves.length) {
+      this.leafList.reset(data.leaves)
+    }
   },
   index: function () {
-    console.log('resetHAI');
+    $.getJSON('/', function (data) {
+      SonorousApp.load(data);
+    });
   },
   view: function (path) {
-    console.log('http://sonorous.dev:5000/' + path);
-    $.getJSON('http://sonorous.dev:5000/' + path, function (data) {
+    path = path.replace("static/", "")
+    console.log('/' + path);
+    $.getJSON('/' + path, function (data) {
       SonorousApp.load(data);
     });
   }
