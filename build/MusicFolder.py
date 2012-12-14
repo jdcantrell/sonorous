@@ -2,7 +2,7 @@
 about each level. It collects the images and available music files in a simple
 object for parsing'''
 import os
-import urllib
+import urllib2
 
 class MusicFolder:
   def __init__(self, path, web_path):
@@ -33,7 +33,7 @@ class MusicFolder:
     #add children to our list
     for c in children:
       print 'Children %s' % self.path + c
-      self._add_child(MusicFolder(self.path + c, self.web_path + urllib.quote(c)))
+      self._add_child(MusicFolder(self.path + c, self.web_path + urllib2.quote(c)))
 
   def _add_file(self, file_name, types, file_type):
     ret = False;
@@ -41,7 +41,11 @@ class MusicFolder:
       try:
         file_name.index(t)
         print "Adding ", file_name
-        self.files[file_type].append(self.web_path  + urllib.quote(file_name))
+        try:
+          self.files[file_type].append({"name": file_name.split('/').pop(), "path": self.web_path  + urllib2.quote(file_name)})
+        except KeyError:
+          self.files[file_type].append({"name": file_name.split('/').pop(),  "path": self.web_path  + urllib2.quote(file_name.encode(encoding="UTF-8"))})
+
         ret = True
       except ValueError:
         pass
