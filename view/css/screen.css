@@ -307,7 +307,7 @@ html, body {
 
 /* line 19, ../../sass/screen.scss */
 a {
-  color: #0a476a;
+  color: #398282;
 }
 
 /* line 22, ../../sass/screen.scss */
@@ -450,16 +450,37 @@ h2 {
 }
 
 /* line 123, ../../sass/screen.scss */
+.content {
+  max-width: 900px;
+  width: 90%;
+  margin: auto;
+}
+
+/* line 132, ../../sass/screen.scss */
+.music-leaf {
+  clear: both;
+  margin: auto;
+  width: 800px;
+}
+/* line 137, ../../sass/screen.scss */
+.music-leaf .music-leaf-cover {
+  max-width: 300px;
+}
+/* line 139, ../../sass/screen.scss */
+.music-leaf .music-leaf-cover img {
+  width: 100%;
+}
+
+/* line 145, ../../sass/screen.scss */
 .music-node {
   text-align: center;
   color: #fff;
   width: 140px;
-  height: 140px;
   margin: 10px 10px;
   float: left;
 }
 
-/* line 131, ../../sass/screen.scss */
+/* line 152, ../../sass/screen.scss */
 .node-cover {
   display: -webkit-box;
   -webkit-box-orient: horizontal;
@@ -474,15 +495,17 @@ h2 {
   -moz-box-shadow: 1px 1px 6px #333333;
   box-shadow: 1px 1px 6px #333333;
 }
-/* line 143, ../../sass/screen.scss */
+/* line 164, ../../sass/screen.scss */
 .node-cover li:first-child {
-  border-radius: 4px 0 0 4px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
 }
-/* line 146, ../../sass/screen.scss */
+/* line 168, ../../sass/screen.scss */
 .node-cover li:last-child {
-  border-radius: 0 4px 4px 0;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
-/* line 150, ../../sass/screen.scss */
+/* line 173, ../../sass/screen.scss */
 .node-cover li {
   -webkit-box-flex: 1;
   height: 100%;
