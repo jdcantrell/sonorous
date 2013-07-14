@@ -2,13 +2,28 @@ import json
 import random
 import urllib
 import logging
+import os
+
+from werkzeug import SharedDataMiddleware
 from MusicFolder import MusicFolder
 from flask import Flask
+
+global config
+config = {
+  'library': '/Volumes/Calcifer/listen'
+}
+
 app = Flask(__name__)
 ch = logging.StreamHandler()
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 ch.setFormatter(formatter)
 app.logger.addHandler(ch)
+
+app.wsgi_app = SharedDataMiddleware(app.wsgi_app, {
+  '/': os.path.join(os.path.dirname(__file__), '../ui'),
+  '/static/music/': '/Volumes/Calcifer/listen'
+})
+
 @app.route("/")
 def index():
   return get_music_directory('')
@@ -19,7 +34,8 @@ def get_music_directory(directory):
   nodes = []
   leaves = []
   print "DIR: %s" % directory
-  folder = MusicFolder("/Volumes/Twoflower/listen/%s" % urllib.unquote(directory), "/static/music/%s" % directory)
+  folder = MusicFolder("%s/%s" % (config['library'], urllib.unquote(directory)), "/static/music/%s" % directory)
+    
   for f in folder.children:
     if (len(f.children)):
       if (len(f.files['images'])):

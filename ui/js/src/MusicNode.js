@@ -1,4 +1,4 @@
-/*globals Backbone, _*/
+/*globals Backbone, _, SonorousApp*/
 var MusicNode = Backbone.Model.extend({});
 
 var MusicNodeView = Backbone.View.extend({
@@ -15,7 +15,6 @@ var MusicNodeView = Backbone.View.extend({
     this.$el.html(this.template(this.model.toJSON()));
   },
   navigate: function () {
-    console.log(this.model);
     SonorousApp.navigate(this.model.get("path"), {trigger: true});
   }
 });
@@ -30,7 +29,7 @@ var NodeView = Backbone.View.extend({
     this.collection.on('reset', this.render, this);
   },
   render: function () {
-    this.$el.html("")
+    this.$el.html("");
     console.log(this.$el);
     this.collection.forEach(this.renderOne, this);
   },
@@ -39,4 +38,4 @@ var NodeView = Backbone.View.extend({
     view.render();
     this.$el.append(view.el);
   }
-})
+});

@@ -1,4 +1,4 @@
-/*globals Backbone, NodeView, NodeList */
+/*globals Backbone, NodeView, NodeList, LeafList, LeafListView, Track, Player */
 var SonorousApp = new (Backbone.Router.extend({
   routes: {
     "": "index",
@@ -19,23 +19,19 @@ var SonorousApp = new (Backbone.Router.extend({
   },
   start: function () {
     Backbone.history.start();
-    if (typeof nodes !== "undefined") {
-      this.nodeList.reset(nodes);
-    }
-    if (typeof leaves !== "undefined") {
-      this.leafList.reset(leaves);
-    }
 
-    this.currentTrack = new Track();
-    this.player = new Player({el:$('.controls'), model: this.currentTrack})
+    this.playlist = new Playlist([]);
+    this.player = new Player({el:$('.controls'), collection: this.playlist});
+
+
   },
   load: function (data) {
     console.log(data);
     if (data.nodes.length) {
-      this.nodeList.reset(data.nodes)
+      this.nodeList.reset(data.nodes);
     }
     if (data.leaves.length) {
-      this.leafList.reset(data.leaves)
+      this.leafList.reset(data.leaves);
     }
   },
   index: function () {
@@ -44,7 +40,7 @@ var SonorousApp = new (Backbone.Router.extend({
     });
   },
   view: function (path) {
-    path = path.replace("static/", "")
+    path = path.replace("static/", "");
     console.log('/' + path);
     $.getJSON('/' + path, function (data) {
       SonorousApp.load(data);
@@ -52,4 +48,4 @@ var SonorousApp = new (Backbone.Router.extend({
   }
 }));
 
-$(function () { SonorousApp.start() } );
+$(function () { SonorousApp.start(); } );

@@ -7,17 +7,18 @@
     <div class="content">
     </div>
     <div class="controls">
-      <a class="play">Play</a>
-      <a class="pause">Pause</a>
-      <a class="stop">Stop</a>
-      <a class="next">Next</a>
-      <a class="prev">Prev</a>
-      <span class="track"></span>
+      <a class="hide play">Play</a>
+      <a class="hide pause">Pause</a>
+      <a class="hide stop">Stop</a>
+      <a class="hide next">Next</a>
+      <a class="hide prev">Prev</a>
+      <span class="track">No music selected</span>
+      <span class="currentTime"></span>
       <audio id="player"></audio>
     </div>
-    <script src="js/zepto.js"></script>
-    <script src="js/underscore.js"></script>
-    <script src="js/backbone.js"></script>
+    <script src="js/lib/jquery-2.0.1.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/backbone.js"></script>
     <script src="js/src/Player.js"></script>
     <script src="js/src/MusicNode.js"></script>
     <script src="js/src/MusicLeaf.js"></script>

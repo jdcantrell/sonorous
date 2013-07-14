@@ -1,8 +1,9 @@
+/* globals Backbone, _, SonorousApp */
 var MusicLeaf = Backbone.Model.extend({});
 
 var MusicLeafView = Backbone.View.extend({
   events: {
-    'click a': 'play',
+    'click a': 'play'
   },
   className: 'music-leaf media',
   template: _.template(
@@ -20,10 +21,9 @@ var MusicLeafView = Backbone.View.extend({
   '</div>'
   ),
   play: function (event) {
-    var anchor = $(event.currentTarget)
+    var anchor = $(event.currentTarget);
     var file = this.model.get('files')[anchor.data('idx')];
-    console.log(anchor, file);
-    SonorousApp.currentTrack.set({"name": file.name, "file_path": file.path, "play": true})
+    Backbone.Events.trigger('musicLeafFileSelect',event, {"name": file.name, "file_path": file.path});
   },
   render: function () {
     this.$el.html(this.template(this.model.toJSON()));
@@ -48,4 +48,4 @@ var LeafListView = Backbone.View.extend({
     view.render();
     this.$el.append(view.el);
   }
-})
+});
